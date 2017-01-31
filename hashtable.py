@@ -1,5 +1,5 @@
 # Practice writing a hash table using python list
-from LinkedList import *
+from linkedlist import *
 class HashTable(object):
 	def __init__(self):
 		# length of the list
@@ -14,7 +14,7 @@ class HashTable(object):
 		# points to a linked list
 		self.vars = [LinkedList() for i in range(self.len)] 
 
-	def hashValue(self, key):
+	def hashvalue(self, key):
 		# return the hash value for a key
 		# do not remember the name of this function 
 		return (hash(key) * self.ratio + self.bias) % self.mod % self.len
@@ -23,7 +23,7 @@ class HashTable(object):
 		# set the value to key 
 		# first search to see if there is already
 		# such a key
-		hval = self.hashValue(key)
+		hval = self.hashvalue(key)
 		self.vars[hval].ptr = self.vars[hval].root
 		# search for the key in the list
 		while(self.vars[hval].ptr != None):
@@ -32,12 +32,12 @@ class HashTable(object):
 				self.vars[hval].ptr.val[1] = val
 			self.vars[hval].ptr = self.vars[hval].ptr.next
 		# if there is not, add it
-		self.vars[self.hashValue(key)].add([key, val])
+		self.vars[self.hashvalue(key)].add([key, val])
 
 	def __getitem__(self, key):
 		# return the value in key
 		# return none if not exists
-		hval = self.hashValue(key)
+		hval = self.hashvalue(key)
 		self.vars[hval].ptr = self.vars[hval].root
 		# search for the key in the list
 		while(self.vars[hval].ptr != None):
