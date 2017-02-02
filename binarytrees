@@ -1,0 +1,88 @@
+# implementing binary trees using linked list
+# code developed closely according to chapter 8 of
+# Algorithms and Data Structure in Python,
+# Michael T. Goodrich, et al.
+# for purpose of study only
+class LinkedBinaryTrees:
+	class _Node:
+		# restrict the attributes in this class using __slots__
+		__slots__ = '_element', 'parent', 'left', 'right'
+		def __init__(\
+			self, \
+			element, \
+			parent=None,\
+			left=None, \
+			right=None
+		):
+			self._val = val
+			self._element = None
+			self._left = None
+			self._right = None
+	
+	class Position:
+		# an abstraction denoting the location of each node 
+		def __init__(self, container, node):
+			# saving which tree it is in
+			self._container = _container
+			# saving the node
+			self._node = node
+
+		def element(self):
+			# return the element stored at this location
+			return self._node._element
+
+		def __eq__(self, p):
+			# check if p is at the same location as self
+			# using 'is': checking the registration ID
+			# different from equal
+			return type(other) is type(self) and \
+				p._container is self._container and \
+				p._node is self._node
+
+		def __ne__(self, p):
+			return not (self == p)
+
+	def _validate(self, p):
+		# if p is valid, return the associated node
+		if not isinstance(self.Position):
+			# if p is not a valid Position instance
+			raise TypeError('p must be proper position type')
+		if p._container is not self:
+			# if p is not in this tree
+			raise ValueError('p must be in this tree')
+		if p._node.parent is p._node:
+			# if p is no deprecated, by convention
+			# we set the node's parent to itself
+			# to deprecate it
+			raise ValueError('p is no longer valid')
+		return p._node
+
+	def _make_position(self, node):
+		# make a position for a given node, return None if node is None
+		return self.Position(self, node) if node is not None else None
+	
+	# constructor of binary tree
+	def __init__(self):
+		self._root = None
+		self._size = 0
+
+	def __len__(self):
+		return self._size
+
+	def root(self):
+		return self._make_position(self.root)
+
+	def parent(self, p):
+		_node = self.validate(p)
+		return self._make_position(_node.parent)
+
+	def left(self, p):
+		_node = self.validate(p)
+		return self._make_position(_node.left)
+
+	def right(self, p):
+		_node = self.validate(p)
+		return self._make_position(_node.right)
+
+	def num
+		
